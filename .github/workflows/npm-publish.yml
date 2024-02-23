@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: read
       packages: write
@@ -31,16 +32,13 @@ jobs:
           restore-keys: ${{ runner.os }}-node-${{ env.cache-name }}
       - if: ${{ steps.cache_dependency_id.outputs.cache-hit != 'true' }}
         run: pnpm install --frozen-lockfile
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: pnpm run build
+
       - if: ${{ steps.vars.outputs.next == 'false' }}
         name: Publish latest
-        run: pnpm publish
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm publish --tag latest --no-git-checks
+
       - if: ${{ steps.vars.outputs.next != 'false' }}
         name: Publish next
         run: pnpm publish --tag next --no-git-checks
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}

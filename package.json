@@ -1,6 +1,6 @@
 {
   "name": "@k1350/npm-library-test",
-  "version": "0.0.1-next.2",
+  "version": "0.0.2",
   "private": false,
   "engines": {
     "pnpm": ">=8.15.1",
