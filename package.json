@@ -1,6 +1,6 @@
 {
   "name": "@k1350/npm-library-test",
-  "version": "0.0.3-next.2",
+  "version": "0.0.3",
   "private": false,
   "engines": {
     "pnpm": ">=8.15.1",
@@ -16,7 +16,7 @@
     "url": "https://github.com/k1350/npm-library-test.git"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
   "exports": {
