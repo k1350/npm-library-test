@@ -19,15 +19,7 @@ jobs:
       - run: corepack enable pnpm
       - name: Set output
         id: vars
-        run: |
-          echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          echo "next=${{ contains(github.ref_name, 'next') }}" >> $GITHUB_OUTPUT
-      - name: Check output
-        run: |
-          echo ${{ steps.vars.outputs.tag }}
-          echo ${{ steps.vars.outputs.next }}
-          echo ${{ steps.vars.outputs.next == 'false' }}
-          echo ${{ steps.vars.outputs.next != 'false' }}
+        run: echo "next=${{ contains(github.ref_name, 'next') }}" >> $GITHUB_OUTPUT
       - name: Cache Dependency
         uses: actions/cache@v4
         id: cache_dependency_id
@@ -49,6 +41,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{ steps.vars.outputs.next != 'false' }}
         name: Publish next
-        run: pnpm publish --tag next
+        run: pnpm publish --tag next --no-git-checks
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
