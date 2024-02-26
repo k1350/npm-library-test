@@ -1,2 +1,1 @@
-export type TestType = '1' | '2' | '3';
-export const TEST: TestType = '1';
+export * from './test2';
