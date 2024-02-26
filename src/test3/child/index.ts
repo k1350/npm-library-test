@@ -1,1 +1,1 @@
-export { Test3Child } from './child3.js';
+export * from './child3.js';
