@@ -23,19 +23,19 @@
     "./test": {
       "import": "./dist/test/index.js",
       "require": "./dist/test/index.cjs",
-      "types": "./dist/types/test/index.d.ts",
+      "types": "./dist/test/index.d.ts",
       "default": "./dist/test/index.js"
     },
     "./test2": {
       "import": "./dist/test2/index.js",
       "require": "./dist/test2/index.cjs",
-      "types": "./dist/types/test2/index.d.ts",
+      "types": "./dist/test2/index.d.ts",
       "default": "./dist/test2/index.js"
     },
     "./test3/child": {
       "import": "./dist/test3/child/index.js",
       "require": "./dist/test3/child/index.cjs",
-      "types": "./dist/types/test3/child/index.d.ts",
+      "types": "./dist/test3/child/index.d.ts",
       "default": "./dist/test3/child/index.js"
     }
   },
