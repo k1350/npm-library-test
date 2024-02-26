@@ -54,7 +54,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - if: ${{ !contains(steps.extract-version.outputs.version, '-') }}
+      - if: ${{ contains(steps.extract-version.outputs.version, '-') }}
         name: Publish canary package
         run: pnpm publish --tag next
         env:
