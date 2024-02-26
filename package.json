@@ -21,22 +21,28 @@
   },
   "exports": {
     "./test": {
-      "import": "./dist/esm/test/index.js",
-      "require": "./dist/cjs/test/index.cjs",
+      "import": "./dist/test/index.js",
+      "require": "./dist/test/index.cjs",
       "types": "./dist/types/test/index.d.ts",
-      "default": "./dist/esm/test/index.js"
+      "default": "./dist/test/index.js"
     },
     "./test2": {
-      "import": "./dist/esm/test2/index.js",
-      "require": "./dist/cjs/test2/index.cjs",
+      "import": "./dist/test2/index.js",
+      "require": "./dist/test2/index.cjs",
       "types": "./dist/types/test2/index.d.ts",
-      "default": "./dist/esm/test2/index.js"
+      "default": "./dist/test2/index.js"
+    },
+    "./test3/child": {
+      "import": "./dist/test3/child/index.js",
+      "require": "./dist/test3/child/index.cjs",
+      "types": "./dist/types/test3/child/index.d.ts",
+      "default": "./dist/test3/child/index.js"
     }
   },
   "scripts": {
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "build": "tsup && tsc",
+    "build": "tsup && tsc --project tsconfig.build.json",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "test": "vitest run"
