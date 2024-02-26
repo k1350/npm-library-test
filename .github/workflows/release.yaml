@@ -32,7 +32,17 @@ jobs:
       - name: Enable pnpm
         run: corepack enable pnpm
 
-      - name: Install dependencies
+      - name: Cache Dependency
+        uses: actions/cache@v4
+        id: cache_dependency_id
+        env:
+          cache-name: cache-dependency
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('.node-version') }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-node-${{ env.cache-name }}
+      
+      - if: ${{ steps.cache_dependency_id.outputs.cache-hit != 'true' }}
         run: pnpm install --frozen-lockfile
 
       - name: Build
